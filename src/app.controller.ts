@@ -1,6 +1,6 @@
-import { Controller, Get, Query, Render } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query, Render } from '@nestjs/common';
 import { AppService } from './app.service';
-import { query } from 'express';
+import { Information } from './Information.dto';
 
 @Controller()
 export class AppController {
@@ -14,13 +14,18 @@ export class AppController {
     };
   }
 
-  @Get('shopFood/:index')
-  @Render('shopperform')
-  shopperForm(@Query("food") food : string) {
-
-    console.log(food);
+  @Get('shopCheck')
+  @Render('shopcheck')
+  shopperForm() {
+    console.log("heuehue")
     return {
-      
+      data: {},
+      errors: []
     }
+  }
+
+  @Post('shopCheck')
+  shopCheck(@Body() Information: Information) {
+    console.log(Information)
   }
 }

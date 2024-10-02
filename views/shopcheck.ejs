@@ -47,16 +47,14 @@
     <main>
         <div class="row">
             <div class="col">
-                <form action="shopFood/1">
                     <div class="card">
                         <img class="card-img-top" src="https://sawepecomcdn.blob.core.windows.net/kfc-web-ordering/KFC_HUN/35_California_Promo/Delivery/440x440/kfc_w4_california_burger_box_delivery_440x440.png" alt="Card image">
                         <div class="card-body">
                           <h4 class="card-title" name="food" value="CALIFORNIA BURGER BOX">CALIFORNIA BURGER BOX</h4>
                           <p class="card-text">California Burger, 5 Hot Wings csípős csirkeszárny és sült burgonya</p>
-                          <input type="submit" class="btn btn-primary">
+                          <a href="#shopper" class="btn btn-primary">Részletek</a>
                         </div>
                     </div>
-                </form>
             </div>
             <div class="col">
                 <div class="card">
@@ -64,7 +62,7 @@
                     <div class="card-body">
                       <h4 class="card-title">DUPLA ZINGER BOX</h4>
                       <p class="card-text">Dupla Zinger,5 darab Hot Wings Csípős Csirkeszárny és Normál Sült Burgonya</p>
-                      <a href="shopper" class="btn btn-primary">Részletek</a>
+                      <a href="#shopper" class="btn btn-primary">Részletek</a>
                     </div>
                   </div>
             </div>
@@ -74,7 +72,7 @@
                     <div class="card-body">
                       <h4 class="card-title">QURRITO BOX</h4>
                       <p class="card-text">Qurrito, 5 Hot Wings csípős csirkeszárny és normál sült burgonya</p>
-                      <a href="shopper" class="btn btn-primary">Részletek</a>
+                      <a href="#shopper" class="btn btn-primary">Részletek</a>
                     </div>
                   </div>
             </div>
@@ -84,7 +82,7 @@
                     <div class="card-body">
                       <h4 class="card-title">CLASSIC MENÜ</h4>
                       <p class="card-text">2 Kentucky csirkerész, sült burgonya és 2 Hot Wings csípős csirkeszárny</p>
-                      <a href="shopper" class="btn btn-primary">Részletek</a>
+                      <a href="#shopper" class="btn btn-primary">Részletek</a>
                     </div>
                   </div>
             </div>
@@ -94,12 +92,27 @@
                     <div class="card-body">
                       <h4 class="card-title">DUPLA ZINGER MENÜ</h4>
                       <p class="card-text">Dupla Zinger, sült burgonya és káposztasaláta, vagy 2 Hot Wings csípős csirkeszárny.</p>
-                      <a href="shopper" class="btn btn-primary">Részletek</a>
+                      <a href="#shopper" class="btn btn-primary">Részletek</a>
                     </div>
                   </div>
             </div>
 
         </div>
+
+        <div class="row">
+            <form method="post">
+                <label for="name">Név: </label><input type="text" name="name"><br>
+                <label for="address">Szállítási cím: </label><input type="text" name="address"><br>
+                <label for="baddress">Számlázási cím: </label><input type="text" name="baddress"><br>
+                <label for="coupon">Kuponkód: </label><input type="text" name="coupon"><br>
+                <label for="banl">Bankárya adatok:</label><br>
+                <input type="text" name="card" placeholder="XXXX-XXXX-XXXX-XXXX">
+                <input type="text" name="expdate" placeholder="HH/ÉÉ"><br>
+                <input type="text" name="code" placeholder="XXX">
+                <input type="submit" class="btn btn-primary" value="gamer">                
+            </form>
+        </div>
+
     </main>
 
     <footer>
