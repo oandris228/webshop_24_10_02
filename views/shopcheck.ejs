@@ -113,6 +113,12 @@
             </form>
         </div>
 
+        <div>
+          <% for (let e of errors){ %>
+            <p style="color: red"><%= e %></p>
+          <% } %>
+        </div>
+
     </main>
 
     <footer>
