@@ -110,6 +110,13 @@ export class AppController {
         errors: errors
       });
       return;
+    } else {
+      response.redirect('successfulform');
     }
+  }
+
+  @Get('successfulform')
+  Success() {
+    return "sikeres feltöltés";
   }
 }
