@@ -2,6 +2,7 @@ import { Body, Controller, Get, Post, Query, Render, Res } from '@nestjs/common'
 import { AppService } from './app.service';
 import { Information } from './Information.dto';
 import { Response } from 'express';
+import { SpecInformation } from './SpecInformation.dto';
 
 @Controller()
 export class AppController {
@@ -52,6 +53,59 @@ export class AppController {
 
     if (errors.length > 0) {
       response.render('shopcheck', {
+        data: Information,
+        errors: errors
+      });
+      return;
+    }
+  }
+
+  @Get('shopSpecific')
+  @Render('specificform')
+  specificForm() {
+    console.log("működik")
+    return {
+      data: {},
+      errors: []
+    }
+  }
+
+  @Post('shopSpecific')
+  specificCheck(@Body() Information: SpecInformation, @Res() response: Response) {
+    console.log(Information);
+    let errors = [];
+
+    if (!Information.bankcode || !Information.name) {
+      errors.push('Az összes mezőt ki kell tölteni.');
+    }
+
+    if (!/[A-Z]/.test(Information.name)) {
+      errors.push('A név formátuma helytelen.');
+    }
+
+    if (!/^\d{8}-\d{8}$/.test(Information.bankcode) && !/^\d{8}-\d{8}-\d{8}$/.test(Information.bankcode)) {
+      errors.push('A bankszámla formátuma helytelen.');
+    }
+
+    if (!Information.checked) {
+      errors.push('A felhasználási feltételek el kell fogadni.');
+    }
+
+    const fs = require('node:fs');
+    const content = Information.name + ";" + Information.bankcode + "\n";
+
+    if (errors.length == 0) {
+      fs.writeFileSync('./src/content.csv', content, {flag: "a+"}, err => {
+        if (err) {
+          console.error(err);
+        } else {
+          // file written successfully
+        }
+      });
+    }
+
+    if (errors.length > 0) {
+      response.render('specificform', {
         data: Information,
         errors: errors
       });
